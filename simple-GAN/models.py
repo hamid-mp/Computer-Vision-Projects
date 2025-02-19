@@ -42,7 +42,8 @@ class Discriminator(nn.Module):
             self.descriminator_block(self.i_ch, self.h_ch),
             self.descriminator_block(self.h_ch, self.h_ch*2),
             self.descriminator_block(self.h_ch*2, self.h_ch*4),
-            nn.Linear(self.h_ch*4)
+            nn.Linear(self.h_ch*4*64*64, 1),
+            nn.Sigmoid()
         )
     
     
