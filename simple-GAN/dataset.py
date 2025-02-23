@@ -23,14 +23,8 @@ class CatsDataset(Dataset):
     
     def __getitem__(self, index):
         img = Image.open(self.images[index]).convert("RGB")
-        try:
+        if self.transform:
             img = self.transform(img)
-        except:
-            img = np.array(img)
-            img = self.transform(image=img)
-            img = torch.tensor(img, dtype=torch.float32, device=self.device)
-            img = img.permute(2, 0, 1)
-
         cls = torch.tensor([1.], dtype=torch.float32, device=self.device) # for descriminator => '1' means real images
         return img, cls
         

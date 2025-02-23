@@ -1,3 +1,5 @@
 batch_size: 256
-lr: 0.0001
-EPOCHS: 200
+dis_lr: 0.00005
+gen_lr: 0.002
+EPOCHS: 1000
+noise_dim: 128
