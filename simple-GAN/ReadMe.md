@@ -1,5 +1,5 @@
 
-# Simple GAN: cat face generation
+# Simple GAN: Cat Face Generation
 
 
 A **Generative Adversarial Network (GAN)** is a class of machine learning frameworks consists of two neural networks, the **Generator** and the **Discriminator**, which are trained simultaneously through adversarial processes.
@@ -9,22 +9,14 @@ A **Generative Adversarial Network (GAN)** is a class of machine learning framew
 
 The goal of the generator is to produce data so realistic that the discriminator cannot tell it apart from real data, while the discriminator aims to get better at distinguishing real from fake data. This adversarial process continues until the generator produces highly realistic data.
 
-
-# Simple GAN: cat face generation
-
-
-A **Generative Adversarial Network (GAN)** is a class of machine learning frameworks consists of two neural networks, the **Generator** and the **Discriminator**, which are trained simultaneously through adversarial processes.
-
-- **Generator**: This network generates new data instances that resemble the training data.
-- **Discriminator**: This network evaluates the data instances and tries to distinguish between real data (from the training set) and fake data (created by the generator).
-
-The goal of the generator is to produce data so realistic that the discriminator cannot tell it apart from real data, while the discriminator aims to get better at distinguishing real from fake data. This adversarial process continues until the generator produces highly realistic data.
+# Dataset
+The source files of dataset can be found in [kaggle](https://www.kaggle.com/datasets/spandan2/cats-faces-64x64-for-generative-models)
 
 
 ## Training Result
 | Generator Loss      | Discriminator Loss       |
 |----------------|----------------|
-| ![Generator Loss](./assets/Generator loss.png)  | ![Discriminator Loss](./assets/Discriminator loss.png)  |
+| ![Generator Loss](./assets/Generator_loss.png)  | ![Discriminator Loss](./assets/Discriminator_loss.png)  |
 
 ## Demo
 
