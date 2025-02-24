@@ -3,10 +3,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+
+
+def sample_noise(batch_size, dim, seed=None, device='cpu'): 
+    tensor = torch.randn(batch_size, dim, 1, 1, device = device)
+    return tensor
+
     
 def noise_gen(n_samples, n_vector_dim, device='cpu'):
     noise = torch.randn(n_samples, n_vector_dim, device=device)  # Generate noise
-    noise = noise.view(n_samples, n_vector_dim, 1, 1)  # Reshape to match the input size of the generator
+    noise = noise.view(n_samples, n_vector_dim, 1)  # Reshape to match the input size of the generator
     return noise
 
 class UnNormalize:
@@ -17,7 +23,9 @@ class UnNormalize:
     def __call__(self, tensor):
         return tensor.detach().cpu() * self.std + self.mean
 
-def show_images(images, numItr="test", out="./out/", grid_size=(8, 8)):
+
+
+def show_images(images, epoch=None, out="./out/", grid_size=(8, 8)):
     # Reshape images to (batch_size, D)
     images = torch.reshape(images, [images.shape[0], -1])
     
@@ -50,4 +58,7 @@ def show_images(images, numItr="test", out="./out/", grid_size=(8, 8)):
         grid_img[row * 64:(row + 1) * 64, col * 64:(col + 1) * 64] = img
 
     # Save the tiled grid image
-    plt.imsave(out + f"{numItr}_tiled.jpg", grid_img)
+    plt.imsave(out + f"{epoch:03d}.jpg", grid_img)
+    
+    
+    
