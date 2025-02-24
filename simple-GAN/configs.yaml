@@ -1,5 +1,11 @@
 batch_size: 256
+<<<<<<< HEAD
 dist_lr: 0.00001
 gen_lr: 0.005
 EPOCHS: 2000
+=======
+dis_lr: 0.00005
+gen_lr: 0.002
+EPOCHS: 1000
+>>>>>>> e8a272e9fc73f875900a9783542c9d71fb7fe7cf
 noise_dim: 128

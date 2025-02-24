@@ -58,7 +58,11 @@ def show_images(images, epoch=None, out="./out/", grid_size=(8, 8)):
         grid_img[row * 64:(row + 1) * 64, col * 64:(col + 1) * 64] = img
 
     # Save the tiled grid image
+<<<<<<< HEAD
     plt.imsave(out + f"{epoch:03d}.jpg", grid_img)
     
     
     
+=======
+    plt.imsave(out + f"{epoch:03d}.jpg", grid_img)
+>>>>>>> e8a272e9fc73f875900a9783542c9d71fb7fe7cf
