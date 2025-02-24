@@ -12,10 +12,7 @@ from dataset import CatsDataset
 from torch.utils.data import DataLoader
 from torchvision import transforms
 from torchvision.transforms import v2
-<<<<<<< HEAD
 from pathlib import Path
-=======
->>>>>>> e8a272e9fc73f875900a9783542c9d71fb7fe7cf
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -43,13 +40,7 @@ def gauss_noise_tensor(img):
 img_aug = transforms.Compose([transforms.RandomHorizontalFlip(0.5),
                              transforms.RandomGrayscale(p=0.2),
                              transforms.RandomVerticalFlip(),
-<<<<<<< HEAD
                              transforms.ToTensor(),
-=======
-                             transforms.GaussianBlur(kernel_size=3),
-                             transforms.ToTensor(),
-                             v2.GaussianNoise(),
->>>>>>> e8a272e9fc73f875900a9783542c9d71fb7fe7cf
                              transforms.Normalize(mean = [0.5, 0.5, 0.5],std = [0.5, 0.5, 0.5]  )])
 
 
@@ -64,18 +55,12 @@ cat_loader = DataLoader(cat_dataset, shuffle=True, batch_size=configs['batch_siz
 
 # Load Training Configs
 gen_model = build_dc_generator(noise_dim=configs['noise_dim']).to(device)#(noise_dim=configs['noise_dim']).to(device)
-<<<<<<< HEAD
 gen_model = nn.DataParallel(gen_model)
 dis_model =  build_dc_classifier().to(device)#Discriminator().to(device)
 dis_model = nn.DataParallel(dis_model)
 dis_criterion = nn.BCELoss()
 gen_criterion = nn.BCELoss()
 
-=======
-dis_model =  build_dc_classifier().to(device)#Discriminator().to(device)
-dis_criterion = nn.BCELoss()
-gen_criterion = nn.BCELoss()
->>>>>>> e8a272e9fc73f875900a9783542c9d71fb7fe7cf
 gen_opt = torch.optim.Adam(gen_model.parameters(), lr=configs['gen_lr'])
 dis_opt = torch.optim.Adam(dis_model.parameters(), lr=configs['dis_lr'], betas=(0.5, 0.999))
 
@@ -90,22 +75,11 @@ for epoch in range(configs['EPOCHS']):
     dis_model.train()  # Set discriminator to training mode
     with tqdm(total=len(cat_loader), desc=f'Epoch {epoch+1}/{configs["EPOCHS"]}', ncols=100, unit='batch') as pbar:
         for i, (x_real, y_real) in enumerate(cat_loader):
-<<<<<<< HEAD
              
             x_real, y_real = x_real.to(device), y_real.to(device)
             
             # Generate random noise for the generator's input
             n_sample_noise = sample_noise(configs['batch_size'], dim=configs['noise_dim'], device=device) 
-=======
-            
-                
-            
-            
-            x_real, y_real = x_real.to(device), y_real.to(device)
-            
-            # Generate random noise for the generator's input
-            n_sample_noise = sample_noise(configs['batch_size'], dim=configs['noise_dim'], device=device) #noise_gen(configs['batch_size'], configs['noise_dim'], device=device)  # noise input for generator
->>>>>>> e8a272e9fc73f875900a9783542c9d71fb7fe7cf
             # Generate fake images using the generator
             x_fake = gen_model(n_sample_noise)
             y_fake = torch.zeros([configs['batch_size'], 1], dtype=torch.float32, device=device)  # Fake labels (0)
@@ -159,12 +133,8 @@ for epoch in range(configs['EPOCHS']):
         plt.cla()
         plt.close()
         
-<<<<<<< HEAD
         show_images(x_fake, epoch)
         
     if epoch % 5 == 0:
         Path('./weights/').mkdir(exist_ok=True, parents=True)
         torch.save(gen_model.state_dict(), './weights/generator.pt')
-=======
-        show_images(x_fake, epoch)
->>>>>>> e8a272e9fc73f875900a9783542c9d71fb7fe7cf
