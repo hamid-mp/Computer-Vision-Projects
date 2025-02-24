@@ -26,9 +26,6 @@ Below is a GIF demonstrating the fake images created by the Generator network:
 
 *As can be seen, Over hundreds of iterations, the `Generator` is learning the critifial features of a cat face*
 
-## Authors
-
-- [@HamidMP](https://github.com/hamid-mp)
 
 
 ### Installation
@@ -45,3 +42,8 @@ Training Parameters can be tuned in `configs.yaml` file
 ```bash
 python main.py
 ```
+
+## Authors
+
+- [@HamidMP](https://github.com/hamid-mp)
+
