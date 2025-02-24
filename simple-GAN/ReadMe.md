@@ -36,7 +36,7 @@ Below is a GIF demonstrating the fake images created by the Generator network:
 ```bash
   git clone https://github.com/hamid-mp/Computer-Vision-Projects.git
   
-  cd Computer-Vision-Projects
+  cd Computer-Vision-Projects/simple-GAN
   
   pip install -r requirements.txt
 ```
